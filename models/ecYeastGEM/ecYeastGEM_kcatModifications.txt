@@ -1,12 +1,16 @@
 Unicode,enz_pos,rxn_pos,Organism,Modified,Parameter,oldValue,newValue,error,ControlCoeff
-P38604,2872,3194,bos taurus,1,SA*Mw,0.001937,4.07633,-47.9814,0.846952
-P38972,2331,2437,escherichia coli,1,SA*Mw,0.05,5.06748,-35.8185,0.236406
-P00931,3116,3593,salmonella enterica subsp. enterica serovar typhimurium,1,SA*Mw,0.022301,775.75,-28.2109,0.118404
-P48445,2353,2477,staphylococcus aureus,1,K_cat,1.22998,450000,-24.1017,0.05718
-P05694,2337,3224,escherichia coli,1,SA*Mw,0.33,3.5,-20.8553,0.047387
-P33312,2262,2355,methanocaldococcus jannaschii,1,SA*Mw,0.000667,0.000667,-20.8553,0.045011
-P39006,3240,4097,escherichia coli,1,SA*Mw,0.053334,366.667,-17.8373,0.038097
-P36148,3183,3821,escherichia coli,1,SA*Mw,0.0918,9.97333,-14.9803,0.035071
-Q12122,2799,3637,schizosaccharomyces pombe,1,K_cat,0.616996,5.133,-12.4876,0.033425
-P54839,2824,3065,blattella germanica,1,SA*Mw,0.415003,33.3333,-10.1508,0.027021
-P32895,3011,3425,salmonella enterica subsp. enterica serovar typhimurium,1,SA*Mw,0.659993,1170,-7.65967,0.027713
+P38604,2872,3194,bos taurus,1,SA*Mw,0.001937,4.07633,-51.177,1.05002
+P38972,2331,2437,escherichia coli,1,SA*Mw,0.05,5.06748,-40.5911,0.219191
+P00931,3116,3593,salmonella enterica subsp. enterica serovar typhimurium,1,SA*Mw,0.022301,775.75,-35.5963,0.083986
+P48445,2353,2477,staphylococcus aureus,1,K_cat,1.22998,450000,-31.1805,0.068491
+P05694,2337,3224,escherichia coli,1,SA*Mw,0.33,3.5,-28.1804,0.0483
+P39006,3240,4097,escherichia coli,1,SA*Mw,0.053334,366.667,-24.8741,0.045992
+P33312,2262,2355,methanocaldococcus jannaschii,1,SA*Mw,0.000667,0.000667,-24.8741,0.042708
+P36148,3183,3821,escherichia coli,1,SA*Mw,0.0918,9.97333,-21.6957,0.042674
+P54839,2824,3065,blattella germanica,1,SA*Mw,0.415003,33.3333,-19.212,0.032098
+P32462,2519,2690,rattus norvegicus,0,SA*Mw,0.06475,0.06475,-19.212,0.032561
+P32476,3084,3544,rattus norvegicus,1,SA*Mw,0.075999,0.181333,-17.8137,0.030143
+P07283,2995,5657,sphingobium chungbukense,1,K_cat,0.825001,134.9,-15.5742,0.027394
+Q12122,2799,3637,schizosaccharomyces pombe,1,K_cat,0.616996,5.133,-13.6429,0.026055
+P00549,3040,3467,mucor racemosus,1,SA*Mw,232.003,6711.92,-11.5707,0.02485
+P32895,3011,3425,salmonella enterica subsp. enterica serovar typhimurium,1,SA*Mw,0.659993,1170,-9.3538,0.025059

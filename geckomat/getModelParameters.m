@@ -11,7 +11,7 @@ function parameters = getModelParameters
 parameters.sigma = 0.5;
 
 %Total protein content in the cell [g protein/gDw]
-parameters.Ptot = 0.5;      %Assumed constant
+parameters.Ptot = 0.3946;      %Assumed constant
 
 %Minimum growth rate the model should grow at [1/h]
 parameters.gR_exp = 0.41;     %[g/gDw h] 

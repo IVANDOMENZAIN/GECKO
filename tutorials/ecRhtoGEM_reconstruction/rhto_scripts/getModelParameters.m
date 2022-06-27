@@ -20,7 +20,7 @@ parameters.gR_exp = 0.3;     %[g/gDw h]
 parameters.org_name = 'rhodotorula toruloides';
 
 %Provide your organism KEGG ID
-%parameters.keggID = 'sce';
+parameters.keggID = '';
 
 %The name of the exchange reaction that supplies the model with carbon (rxnNames)
 parameters.c_source = 'D-glucose exchange (reversible)'; 

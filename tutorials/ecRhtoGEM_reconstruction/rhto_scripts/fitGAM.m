@@ -6,8 +6,7 @@ function GAM = fitGAM(model,verbose)
 %
 % Usage: GAM = fitGAM(model,verbose)
 %
-% Benjamin Sanchez. Last update: 2018-10-27
-% Ivan Domenzain.   Last update: 2020-04-06
+% Ivan Domenzain.   Last update: 2022.06.29
 
 cd ..
 parameters = getModelParameters;
@@ -23,7 +22,7 @@ else
     
     %Load chemostat data:
     fid = fopen('../../databases/chemostatData.tsv','r');
-    exp_data = textscan(fid,'%f32 %f32 %f32 %f32','Delimiter','\t','HeaderLines',1);
+    exp_data = textscan(fid,'%f32 %f32',Delimiter','\t','HeaderLines',1);
     exp_data = [exp_data{1} exp_data{2} exp_data{3} exp_data{4}];
     fclose(fid);
     
@@ -61,7 +60,7 @@ else
     title('GAM fitting for growth on glucose minimal media')
     xlabel('Dilution rate [1/h]')
     ylabel('Exchange fluxes [mmol/gDWh]')
-    legend(b,'Glucose consumption','O2 consumption','CO2 production','Location','northwest')
+    legend(b,'Glucose consumption','Location','northwest')
     hold off
 end
 end
@@ -105,8 +104,6 @@ cd limit_proteins
 exch_names  = parameters.exch_names;
 pos(1)      = find(strcmp(model.rxnNames,exch_names{1}));
 pos(2)      = find(strcmp(model.rxnNames,exch_names{2}));
-pos(3)      = find(strcmp(model.rxnNames,exch_names{3}));
-pos(4)      = find(strcmp(model.rxnNames,exch_names{4}));
 
 %Simulate chemostats:
 mod_data = zeros(size(exp_data));

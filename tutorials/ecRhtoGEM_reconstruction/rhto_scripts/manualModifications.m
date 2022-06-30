@@ -4,40 +4,6 @@ function [model,modifications] = manualModifications(model)
 
 modifications{1} = [];
 modifications{2} = [];
-
-for i = 1:length(model.rxns)
-    reaction = model.rxnNames{i};
-    %Find set of proteins present in rxn:
-    S        = full(model.S);
-    subs_pos = find(S(:,i) < 0);
-    prot_pos = find(~cellfun(@isempty,strfind(model.mets,'prot_')));
-    int_pos  = intersect(subs_pos,prot_pos);
-    prot_set = cell(size(int_pos));
-    MW_set   = 0;
-    for j = 1:length(int_pos)
-        met_name    = model.mets{int_pos(j)};
-        prot_set{j} = met_name(6:end);
-        MW_set      = MW_set + model.MWs(strcmp(model.enzymes,prot_set{j}));
-    end
-    %Update int_pos:
-    S        = full(model.S);
-    subs_pos = find(S(:,i) < 0);
-    %Get the proteins that are part of the i-th rxn
-    prot_pos = find(~cellfun(@isempty,strfind(model.mets,'prot_')));
-    int_pos  = intersect(subs_pos,prot_pos)';
-    %%%%%%%%%%%%%%%%%%%%%%%%%%%  Individual Changes:  %%%%%%%%%%%%%%%%%%%%%%%%
-    for j = 1:length(int_pos)
-        enzName = model.mets(int_pos(j));
-        %%%%%%%%%%%%%%%%%% MANUAL CURATION FOR TOP GROWTH LIMITING ENZYMES:
-        [newValue,modifications] = curation_growthLimiting(reaction,enzName,MW_set,modifications);
-        if ~isempty(newValue)
-            model.S(int_pos(j),i) = newValue;
-        end
-    end
-    if rem(i,100) == 0 || i == length(model.rxns)
-        disp(['Improving model with curated data: Ready with rxn ' num2str(i)])
-    end
-end
 %%%%%%%%%%%%%%%%%%%%%%%%% Other manual changes: %%%%%%%%%%%%%%%%%%%%%%%%%%%
 %model = otherChanges(model);
 % Remove repeated reactions (2017-01-16):
@@ -103,44 +69,6 @@ model.ub(strcmp(model.rxnNames,'D-glucose exchange')) = 0;
 % Map the index of the modified Kcat values to the new model (after rxns
 % removals).
 modifications = mapModifiedRxns(modifications,model);
-end
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Modify the top growth limiting enzymes that were detected by the
-% modifyKcats.m script in a preliminary run.
-function [newValue,modifications] = curation_growthLimiting(reaction,enzName,MW_set,modifications)
-newValue = [];
-reaction = string(reaction);
-
-% 3-hydroxy-3-methylglutaryl coenzyme A reductase (M7XI04/EC1.1.1.34):
-% Only kcat available in BRENDA was for Rattus Norvegicus. Value
-% corrected with max. s.a. in Rattus norvegicus [0.03 umol/min/mg, Mw=226 kDa]
-% from BRENDA (2018-01-27)
-% if (strcmpi('prot_M7XI04',enzName) && (contains(reaction,'hydroxymethylglutaryl CoA reductase')))
-%     % Ratus norvegicus
-%     newValue = -(0.023*3600)^-1;
-%     %newValue         = -(0.03*226000*0.06)^-1;
-%     modifications{1} = [modifications{1}; string('M7XI04')];
-%     modifications{2} = [modifications{2}; reaction];
-% end
-end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Modify those kcats involved in extreme misspredictions for growth on
-% several carbon sources. This values were obtained by specific searches on
-% the involved pathways for the identification of the ec numbers and then
-% its associated Kcat values were gotten from BRENDA.
-function [newValue,modifications] = curation_carbonSources(reaction,enzName,MW_set,modifications)
-end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% After the growth limiting Kcats analysis and the curation for several
-% carbon sources, a simulation for the model growing on minimal glucose
-% media yielded a list of the top used enzymes (mass-wise), those that were
-% taking more than 10% of the total proteome are chosen for manual curation
-function [newValue,modifications] = curation_topUsedEnz(reaction,enzName,MW_set,modifications)
-
-end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-function model = otherChanges(model)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 function modified = mapModifiedRxns(modifications,model)

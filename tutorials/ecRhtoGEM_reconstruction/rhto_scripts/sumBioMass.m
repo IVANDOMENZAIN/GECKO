@@ -9,8 +9,7 @@
 % L -> Lipid fraction [g/gDW]
 % Function adapted from SLIMEr: https://github.com/SysBioChalmers/SLIMEr
 %
-% Benjamin Sanchez. Last update: 2018-10-23
-% Ivan Domenzain.   Last update: 2019-07-13
+% Ivan Domenzain.   Last update: 2022-07-04
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 function [X,P,C,R,D,L] = sumBioMass(model)
@@ -40,18 +39,15 @@ comps = {'s_0404'	89.09       'P'     % A     Alanine         ala
          's_0004'	180.16      'C'     % (1->6)-beta-D-glucan
          's_0773'   180.16      'C'     % glycogen
          's_1107'   180.16      'C'     % mannan
-         's_1520'   342.296 	'C'     % trehalose
+         's_1520'   342.296 	'C'     % trehalose         
          's_0423'   347.22      'R'     % AMP
          's_0526'   323.2       'R'     % CMP
          's_0782'   363.22      'R'     % GMP
-         's_1545'   324.18      'R'     % UMP
+         's_1545'   324.18      'R'     % UMP        
          's_0584'   331.22      'D'     % dAMP
          's_0589'   307.2       'D'     % dCMP
          's_0615'   345.21      'D'     % dGMP
-         's_0649'   322.21      'D'     % dTMP
-         's_3714'   852.83      'N'     % heme a
-         's_1405'   376.36      'N'     % riboflavin
-         's_1467'   96.06       'N'};   % sulphate
+         's_0649'   322.21      'D'};   % dTMP
 
 %Get main fractions:
 [P,X] = getFraction(model,comps,'P',0);

@@ -22,8 +22,8 @@ else
     
     %Load chemostat data:
     fid = fopen('../../databases/chemostatData.tsv','r');
-    exp_data = textscan(fid,'%f32 %f32',Delimiter','\t','HeaderLines',1);
-    exp_data = [exp_data{1} exp_data{2} exp_data{3} exp_data{4}];
+    exp_data = textscan(fid,'%f32 %f32','Delimiter','\t','HeaderLines',1);
+    exp_data = [exp_data{1} exp_data{2}];
     fclose(fid);
     
     %Remove limitation on enzymes (if any):
@@ -31,7 +31,7 @@ else
     
     %GAMs to span:
     fprintf('Estimating GAM...')
-    GAM = 20:5:100;
+    GAM = 50:5:150;
     
     %1st iteration:
     GAM = iteration(model,GAM,exp_data,verbose);

@@ -25,9 +25,13 @@ model.ub(exchange) = 0;
 %Allow main carbon source uptake
 c_id  = model.rxns(strcmp(model.rxnNames,c_source));
 model = setParam(model,'ub',c_id,flux);
-model = setParam(model, 'ub', 'r_1861_REV', +1000); % 'iron(2+) exchange';
-model = setParam(model, 'ub', 'r_2060_REV', +1000); % 'sulphate exchange';
-model = setParam(model, 'ub', 'r_1714', 0);         % block D-glucose production';
-model = setParam(model, 'ub', 'r_1992', 0);         % block oxygen production';
-model = setParam(model, 'ub', 'r_2111', +1000);     % allow biomass production
+model = setParam(model, 'ub', 'r_1861_REV', +1000);  % 'iron(2+) exchange';
+model = setParam(model, 'ub', 'r_2060_REV', +1000);  % 'sulphate exchange';
+model = setParam(model, 'ub', 'r_1992_REV', +1000);  % oxygen uptake;
+model = setParam(model, 'ub', 'r_2005_REV', +1000);  % phosphate uptake;
+model = setParam(model, 'ub', 'r_1654_REV', +1000);  % ammonium uptake;
+model = setParam(model, 'ub', 'r_1714', 0);          % block D-glucose production';
+model = setParam(model, 'ub', 'r_1992', 0);          % block oxygen production';
+model = setParam(model, 'ub', 'r_2111', +1000);      % allow biomass production
+
 end

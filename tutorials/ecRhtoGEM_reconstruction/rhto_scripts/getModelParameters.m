@@ -14,7 +14,7 @@ parameters.sigma = 0.5;
 parameters.Ptot = 0.2669;      %Assumed constant
 
 %Minimum growth rate the model should grow at [1/h]
-parameters.gR_exp = 0.3;     %[g/gDw h] 
+parameters.gR_exp = 0.7;     %[g/gDw h] 
 
 %Provide your organism scientific name
 parameters.org_name = 'rhodotorula toruloides';

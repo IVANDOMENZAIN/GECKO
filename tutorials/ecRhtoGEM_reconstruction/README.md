@@ -58,7 +58,7 @@ Typically, if the experimental data in the chemostatData.tsv file complies with 
 
 ## 3. Generate ecRhtoGEM
 
-A detailed step-by-step guide for enhancing rhto-GEM with enzyme constraints is presented in the live script [ecRhtoGEM.mlx](https://github.com/SysBioChalmers/GECKO/tree/feat/add_tutorial/tutorials/ecRhtoGEM_reconstruction)
+A detailed step-by-step guide for enhancing rhto-GEM with enzyme constraints is presented in the live script [ecRhtoGEM_enhance.mlx](https://github.com/SysBioChalmers/GECKO/tree/feat/add_tutorial/tutorials/ecRhtoGEM_reconstruction)
 
 
 ## 4. Manual curation of kinetic parameters in ecRhtoGEM
